@@ -11,7 +11,8 @@ class GetWeatherCubit extends Cubit<WeatherStates> {
 
   GetWeatherCubit() : super(NoWeatherStates());
   getWeather({required String cityName})async{
-   try{
+        emit(LoadingStates());
+    try{
 
     WeatherModel ? weatherModel=await Webservicesclass(dio: Dio()).getAllData(cityName: cityName);
      emit(WeatherLoadedStates(weatherModel: weatherModel));

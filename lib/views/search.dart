@@ -5,6 +5,7 @@ import 'package:weather_app/models/bigData.dart';
 
 import '../cubit/get_weather_cubit/getWeatherCubit.dart';
 import '../webServices/webServicesClass.dart';
+import 'home_view.dart';
 
 class Search extends StatelessWidget {
   @override
@@ -21,7 +22,7 @@ class Search extends StatelessWidget {
             TextFormField(
                 onFieldSubmitted: (value)async {
                  await BlocProvider.of<GetWeatherCubit>(context).getWeather(cityName: value);
-                  Navigator.pop(context);
+                  Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>HomeView()));
                 },
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(

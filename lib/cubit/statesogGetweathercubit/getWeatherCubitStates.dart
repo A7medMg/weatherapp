@@ -4,6 +4,7 @@ import 'package:weather_app/models/dataModel.dart';
 import '../../models/bigData.dart';
 
 class WeatherStates{}
+class LoadingStates extends WeatherStates{}
 class NoWeatherStates extends WeatherStates{}
 class WeatherLoadedStates extends WeatherStates{
   WeatherModel ? weatherModel;

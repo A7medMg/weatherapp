@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
             child: IconButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Search()));
+                      .pushReplacement(MaterialPageRoute(builder: (context) => Search()));
                 },
                 icon: const Icon(
                   Icons.search_rounded,
@@ -36,7 +36,12 @@ class HomeView extends StatelessWidget {
         builder: (BuildContext context, state) {
           if(state is NoWeatherStates){
             return NoWeatherBody();
-          }else if(state is WeatherLoadedStates){
+          } else if(state is LoadingStates){
+
+            return const Center(child: CircularProgressIndicator(),);
+          }
+
+          else if(state is WeatherLoadedStates){
 
             return WeatherInfoBody(weatherModel: state.weatherModel);
           }
